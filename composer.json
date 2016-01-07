@@ -1,5 +1,5 @@
 {
-    "name": "weew/php-router-invoker-container-aware",
+    "name": "weew/php-router-routes-invoker-container-aware",
     "description": "Container aware routes invoker for the weew/router package.",
     "license": "MIT",
     "authors": [
@@ -18,7 +18,12 @@
             "Tests\\": "tests/"
         }
     },
-    "require": {},
+    "require": {
+        "weew/php-container": "^1.0",
+        "weew/php-router": "^1.1",
+        "weew/php-http": "^1.1",
+        "weew/php-helpers-string": "^1.1"
+    },
     "require-dev": {
         "phpunit/phpunit": "^4.7",
         "satooshi/php-coveralls": "^0.6.1"
