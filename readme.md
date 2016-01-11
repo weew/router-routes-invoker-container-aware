@@ -36,4 +36,5 @@ $response = $routesInvoker->invoke($route);
 $response->send();
 ```
 
-Note: router returns `null` when no route could be matched. If that's the case, RouteInvoker will return a 404 response for you.
+Note: router returns `null` whenever a route couldn't be
+matched. In that's the case, `RoutesInvoker` will return you a 404 response instead.
