@@ -38,3 +38,5 @@ $response->send();
 
 Note: router returns `null` whenever a route couldn't be
 matched. In that's the case, `RoutesInvoker` will return you a 404 response instead.
+
+If your response object implements the `IHttpResponseHolder` interface, invoker will extract the http response and return it instead.

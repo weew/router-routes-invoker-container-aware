@@ -6,6 +6,7 @@ use Weew\Container\IContainer;
 use Weew\Http\HttpResponse;
 use Weew\Http\HttpStatusCode;
 use Weew\Http\IHttpResponse;
+use Weew\Router\Invoker\ContainerAware\Contracts\IHttpResponseHolder;
 use Weew\Router\Invoker\ContainerAware\Exceptions\InvalidRouteValue;
 use Weew\Router\Invoker\ContainerAware\Invokers\ArraySyntaxRouteInvoker;
 use Weew\Router\Invoker\ContainerAware\Invokers\CallableRouteInvoker;
@@ -37,7 +38,7 @@ class RoutesInvoker implements IRoutesInvoker {
      *
      * @param IRoute $route
      *
-     * @return HttpResponse|IHttpResponse
+     * @return IHttpResponse
      * @throws InvalidRouteValue
      */
     public function invoke($route) {
@@ -59,6 +60,10 @@ class RoutesInvoker implements IRoutesInvoker {
 
         if ($invoker) {
             $response = $invoker->invoke($route, $this->container);
+
+            if ($response instanceof IHttpResponseHolder) {
+                $response = $response->getHttpResponse();
+            }
 
             if ( ! $response instanceof IHttpResponse) {
                 $response = new HttpResponse(HttpStatusCode::OK, $response);
