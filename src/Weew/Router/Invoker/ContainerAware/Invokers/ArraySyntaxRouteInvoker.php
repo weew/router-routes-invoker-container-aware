@@ -19,7 +19,7 @@ class ArraySyntaxRouteInvoker implements IRouteInvoker {
      */
     public function supports(IRoute $route) {
         list($controller, $method) = $this->extractControllerAndMethod(
-            $route->getHandler()
+            $route->getAction()
         );
 
         if ($controller !== null && $method !== null) {
@@ -37,7 +37,7 @@ class ArraySyntaxRouteInvoker implements IRouteInvoker {
      */
     public function invoke(IRoute $route, IContainer $container) {
         list($controller, $method) = $this->extractControllerAndMethod(
-            $route->getHandler()
+            $route->getAction()
         );
 
         $this->ensureClassExists($controller);

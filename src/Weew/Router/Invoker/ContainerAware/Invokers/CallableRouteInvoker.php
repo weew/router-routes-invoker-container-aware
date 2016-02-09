@@ -16,7 +16,7 @@ class CallableRouteInvoker implements IRouteInvoker {
      * @return mixed
      */
     public function supports(IRoute $route) {
-        return is_callable($route->getHandler());
+        return is_callable($route->getAction());
     }
 
     /**
@@ -27,7 +27,7 @@ class CallableRouteInvoker implements IRouteInvoker {
      */
     public function invoke(IRoute $route, IContainer $container) {
         return $container->call(
-            $route->getHandler(), $route->getParameters()
+            $route->getAction(), $route->getParameters()
         );
     }
 }

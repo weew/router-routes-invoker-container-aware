@@ -15,10 +15,10 @@ class ArraySyntaxRouteInvokerTest extends PHPUnit_Framework_TestCase {
     public function test_supports() {
         $invoker = new ArraySyntaxRouteInvoker();
         $this->assertFalse(
-            $invoker->supports(new Route(HttpRequestMethod::GET, 'foo', 'bar'))
+            $invoker->supports(new Route([HttpRequestMethod::GET], 'foo', 'bar'))
         );
         $this->assertTrue(
-            $invoker->supports(new Route(HttpRequestMethod::GET, 'foo', ['foo', 'bar']))
+            $invoker->supports(new Route([HttpRequestMethod::GET], 'foo', ['foo', 'bar']))
         );
     }
 
@@ -27,7 +27,7 @@ class ArraySyntaxRouteInvokerTest extends PHPUnit_Framework_TestCase {
         $container = new Container();
         $item = new FooItem();
 
-        $route = new Route(HttpRequestMethod::GET, 'foo', [FooItem::class, 'test']);
+        $route = new Route([HttpRequestMethod::GET], 'foo', [FooItem::class, 'test']);
         $route->setParameter('bar', $item);
 
         $this->assertTrue(
@@ -38,7 +38,7 @@ class ArraySyntaxRouteInvokerTest extends PHPUnit_Framework_TestCase {
     public function test_invoke_with_invalid_controller_class() {
         $invoker = new ArraySyntaxRouteInvoker();
         $container = new Container();
-        $route = new Route(HttpRequestMethod::GET, 'foo', ['foo', 'test']);
+        $route = new Route([HttpRequestMethod::GET], 'foo', ['foo', 'test']);
 
         $this->setExpectedException(InvalidControllerClass::class);
         $invoker->invoke($route, $container);
@@ -47,7 +47,7 @@ class ArraySyntaxRouteInvokerTest extends PHPUnit_Framework_TestCase {
     public function test_invoke_with_invalid_controller_method() {
         $invoker = new ArraySyntaxRouteInvoker();
         $container = new Container();
-        $route = new Route(HttpRequestMethod::GET, 'foo', [FooItem::class, 'foo']);
+        $route = new Route([HttpRequestMethod::GET], 'foo', [FooItem::class, 'foo']);
 
         $this->setExpectedException(InvalidControllerMethod::class);
         $invoker->invoke($route, $container);

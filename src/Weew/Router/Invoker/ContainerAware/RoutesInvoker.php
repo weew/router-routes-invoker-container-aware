@@ -73,7 +73,7 @@ class RoutesInvoker implements IRoutesInvoker {
         }
 
         throw new InvalidRouteValue(
-            s('Could not resolve route value of type %s.', get_type($route->getHandler()))
+            s('Could not resolve route value of type %s.', get_type($route->getAction()))
         );
     }
 

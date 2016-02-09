@@ -33,7 +33,7 @@ class RoutesInvokerTest extends PHPUnit_Framework_TestCase {
     public function test_invoke_route() {
         $routesInvoker = new RoutesInvoker(new Container());
         $response = new HttpResponse(HttpStatusCode::OK);
-        $route = new Route(HttpRequestMethod::GET, 'foo', function() use ($response) {
+        $route = new Route([HttpRequestMethod::GET], 'foo', function() use ($response) {
             return $response;
         });
 
@@ -42,7 +42,7 @@ class RoutesInvokerTest extends PHPUnit_Framework_TestCase {
 
     public function test_invoke_route_with_non_http_response_as_return_value() {
         $routesInvoker = new RoutesInvoker(new Container());
-        $route = new Route(HttpRequestMethod::GET, 'foo', function() {
+        $route = new Route([HttpRequestMethod::GET], 'foo', function() {
             return 'foo';
         });
         $response = $routesInvoker->invokeRoute($route);
@@ -55,7 +55,7 @@ class RoutesInvokerTest extends PHPUnit_Framework_TestCase {
 
     public function test_invoke_route_with_bad_route_handler() {
         $routesInvoker = new RoutesInvoker(new Container());
-        $route = new Route(HttpRequestMethod::GET, 'foo', 'bar');
+        $route = new Route([HttpRequestMethod::GET], 'foo', 'bar');
         $this->setExpectedException(InvalidRouteValue::class);
         $routesInvoker->invokeRoute($route);
     }
@@ -63,7 +63,7 @@ class RoutesInvokerTest extends PHPUnit_Framework_TestCase {
     public function test_invoke() {
         $routesInvoker = new RoutesInvoker(new Container());
         $response = new HttpResponse(HttpStatusCode::OK);
-        $route = new Route(HttpRequestMethod::GET, 'foo', function() use ($response) {
+        $route = new Route([HttpRequestMethod::GET], 'foo', function() use ($response) {
             return $response;
         });
 
@@ -83,7 +83,7 @@ class RoutesInvokerTest extends PHPUnit_Framework_TestCase {
         $holder = new FakeResponseHolder($response);
         $routesInvoker = new RoutesInvoker(new Container());
 
-        $route = new Route(HttpRequestMethod::GET, 'foo', function() use ($holder) {
+        $route = new Route([HttpRequestMethod::GET], 'foo', function() use ($holder) {
             return $holder;
         });
 
