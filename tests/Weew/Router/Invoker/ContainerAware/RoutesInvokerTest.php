@@ -3,6 +3,7 @@
 namespace Tests\Weew\Router\Invoker\ContainerAware;
 
 use PHPUnit_Framework_TestCase;
+use Tests\Weew\Router\Invoker\ContainerAware\Stubs\FakeResponseable;
 use Tests\Weew\Router\Invoker\ContainerAware\Stubs\FakeResponseHolder;
 use Weew\Container\Container;
 use Weew\Http\HttpRequestMethod;
@@ -78,7 +79,7 @@ class RoutesInvokerTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(HttpStatusCode::NOT_FOUND, $response->getStatusCode());
     }
 
-    public function test_invoke_with_http_response_holder_response() {
+    public function test_invoke_with_http_response_holder_as_response() {
         $response = new HttpResponse(HttpStatusCode::OK);
         $holder = new FakeResponseHolder($response);
         $routesInvoker = new RoutesInvoker(new Container());
@@ -88,5 +89,17 @@ class RoutesInvokerTest extends PHPUnit_Framework_TestCase {
         });
 
         $this->assertTrue($routesInvoker->invoke($route) === $holder->getHttpResponse());
+    }
+
+    public function test_invoke_with_http_responseable_as_response() {
+        $response = new HttpResponse(HttpStatusCode::OK);
+        $holder = new FakeResponseable($response);
+        $routesInvoker = new RoutesInvoker(new Container());
+
+        $route = new Route([HttpRequestMethod::GET], 'foo', function() use ($holder) {
+            return $holder;
+        });
+
+        $this->assertTrue($routesInvoker->invoke($route) === $holder->toHttpResponse());
     }
 }

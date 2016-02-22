@@ -36,7 +36,6 @@ $response = $routesInvoker->invoke($route);
 $response->send();
 ```
 
-Note: router returns `null` whenever a route couldn't be
-matched. In that's the case, `RoutesInvoker` will return you a 404 response instead.
+If response object implements either the `IHttpResponseHolder` or `IHttpResponseable` interface, invoker will extract the http response and return it instead.
 
-If your response object implements the `IHttpResponseHolder` interface, invoker will extract the http response and return it instead.
+Router returns `null` whenever a route could not be matched. In this case, `RoutesInvoker` will return a 404 `HttpResponse` object instead.

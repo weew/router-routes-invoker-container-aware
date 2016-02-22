@@ -3,7 +3,7 @@
 namespace Tests\Weew\Router\Invoker\ContainerAware\Stubs;
 
 use Weew\Http\IHttpResponse;
-use Weew\Router\Invoker\ContainerAware\Contracts\IHttpResponseHolder;
+use Weew\Http\IHttpResponseHolder;
 
 class FakeResponseHolder implements IHttpResponseHolder {
     private $httpResponse;

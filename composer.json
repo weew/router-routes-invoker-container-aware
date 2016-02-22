@@ -21,7 +21,7 @@
     "require": {
         "weew/php-container": "^1.0",
         "weew/php-router": "^2.0",
-        "weew/php-http": "^1.1",
+        "weew/php-http": "^1.7",
         "weew/php-helpers-string": "^1.1"
     },
     "require-dev": {
