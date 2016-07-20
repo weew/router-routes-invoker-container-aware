@@ -10,7 +10,7 @@
          syntaxCheck="false"
          bootstrap="tests/bootstrap.php">
     <testsuites>
-        <testsuite name="php-router-routes-invoker-container-aware">
+        <testsuite name="router-routes-invoker-container-aware">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>

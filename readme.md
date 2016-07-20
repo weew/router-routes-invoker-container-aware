@@ -1,10 +1,10 @@
 # Routes invoker
 
-[![Build Status](https://img.shields.io/travis/weew/php-router-routes-invoker-container-aware.svg)](https://travis-ci.org/weew/php-router-routes-invoker-container-aware)
-[![Code Quality](https://img.shields.io/scrutinizer/g/weew/php-router-routes-invoker-container-aware.svg)](https://scrutinizer-ci.com/g/weew/php-router-routes-invoker-container-aware)
-[![Test Coverage](https://img.shields.io/coveralls/weew/php-router-routes-invoker-container-aware.svg)](https://coveralls.io/github/weew/php-router-routes-invoker-container-aware)
-[![Version](https://img.shields.io/packagist/v/weew/php-router-routes-invoker-container-aware.svg)](https://packagist.org/packages/weew/php-router-routes-invoker-container-aware)
-[![Licence](https://img.shields.io/packagist/l/weew/php-router-routes-invoker-container-aware.svg)](https://packagist.org/packages/weew/php-router-routes-invoker-container-aware)
+[![Build Status](https://img.shields.io/travis/weew/router-routes-invoker-container-aware.svg)](https://travis-ci.org/weew/router-routes-invoker-container-aware)
+[![Code Quality](https://img.shields.io/scrutinizer/g/weew/router-routes-invoker-container-aware.svg)](https://scrutinizer-ci.com/g/weew/router-routes-invoker-container-aware)
+[![Test Coverage](https://img.shields.io/coveralls/weew/router-routes-invoker-container-aware.svg)](https://coveralls.io/github/weew/router-routes-invoker-container-aware)
+[![Version](https://img.shields.io/packagist/v/weew/router-routes-invoker-container-aware.svg)](https://packagist.org/packages/weew/router-routes-invoker-container-aware)
+[![Licence](https://img.shields.io/packagist/l/weew/router-routes-invoker-container-aware.svg)](https://packagist.org/packages/weew/router-routes-invoker-container-aware)
 
 ## Table of contents
 
@@ -14,11 +14,11 @@
 
 ## Installation
 
-`composer require weew/php-router-routes-invoker-container-aware`
+`composer require weew/router-routes-invoker-container-aware`
 
 ## Introduction
 
-This package is meant to be used in combination with [weew/php-router](https://github.com/weew/php-router). It's job is to invoke routes that have been successfully matched by the router. It uses the [weew/php-container](https://github.com/weew/php-container) package to provide dependency injection.
+This package is meant to be used in combination with [weew/router](https://github.com/weew/router). It's job is to invoke routes that have been successfully matched by the router. It uses the [weew/container](https://github.com/weew/container) package to provide dependency injection.
 
 ## Usage
 
